@@ -1,0 +1,35 @@
+# This file describes the network interfaces available on your system
+# and how to activate them. For more information, see interfaces(5).
+
+# The loopback network interface
+auto lo
+iface lo inet loopback
+
+# The primary network interface
+auto eth0
+iface eth0 inet static
+	address 128.163.188.129
+	netmask 255.255.255.0
+	network 128.163.188.0
+	broadcast 128.163.188.255
+	gateway 128.163.188.1
+	# dns-* options are implemented by the resolvconf package, if installed
+	dns-nameservers 128.163.3.10
+	dns-search uky.edu
+
+auto eth1
+iface eth1 inet static
+        address 172.31.248.6
+	netmask 255.255.254.0
+	network 172.31.248.0
+	broadcast 172.31.249.255
+	
+auto br100
+iface br100 inet static
+        bridge_ports eth1
+        bridge_stp off
+        bridge_maxwait 0
+        bridge_fd 0
+        address 172.31.248.8
+	netmask 255.255.248.0
+
